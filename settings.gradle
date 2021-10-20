@@ -1,0 +1,3 @@
+rootProject.name = 'integrationApiMP'
+include 'groove'
+
