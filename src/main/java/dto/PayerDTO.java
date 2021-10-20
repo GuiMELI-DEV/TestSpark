@@ -15,14 +15,6 @@ public class PayerDTO {
     public PayerDTO() {
     }
 
-    public PayerDTO(String email, String firstName, String lastName, IdentificationDTO identification, AddressDTO address) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.identification = identification;
-        this.address = address;
-    }
-
     public String getEmail() {
         return email;
     }

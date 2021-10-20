@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="service.PaymentServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-10-20T19:08:17" hostname="BR0C02DX1NAMD6Q" time="1.195">
+  <properties/>
+  <testcase name="get payment by Id" classname="service.PaymentServiceTest" time="1.195">
+    <failure message="org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method findById() to invoke from this list:&#10;  public static com.mercadopago.resources.Payment com.mercadopago.resources.Payment#findById(java.lang.String)&#10;  public static com.mercadopago.resources.Payment com.mercadopago.resources.Payment#findById(java.lang.String, java.lang.Boolean)&#10;  public static com.mercadopago.resources.Payment com.mercadopago.resources.Payment#findById(java.lang.String, java.lang.Boolean, com.mercadopago.core.MPRequestOptions)" type="org.codehaus.groovy.runtime.metaclass.MethodSelectionException">org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method findById() to invoke from this list:
+  public static com.mercadopago.resources.Payment com.mercadopago.resources.Payment#findById(java.lang.String)
+  public static com.mercadopago.resources.Payment com.mercadopago.resources.Payment#findById(java.lang.String, java.lang.Boolean)
+  public static com.mercadopago.resources.Payment com.mercadopago.resources.Payment#findById(java.lang.String, java.lang.Boolean, com.mercadopago.core.MPRequestOptions)
+	at service.PaymentServiceTest.get payment by Id(PaymentServiceTest.groovy:81)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

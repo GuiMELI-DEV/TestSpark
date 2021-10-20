@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">integrationApiMP</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">PaymentController.java</span></div><h1>PaymentController.java</h1><pre class="source lang-java linenums">package controller;
+
+import com.mercadopago.exceptions.MPException;
+import com.mercadopago.resources.Payment;
+import com.mercadopago.resources.Preference;
+import dto.PaymentDTO;
+import services.PaymentService;
+import services.PreferenceService;
+import spark.Request;
+import spark.Response;
+import util.Parser;
+
+public class PaymentController {
+    private PaymentController(){}
+
+    public static Payment createNewPayment(Request request, Response response) throws MPException {
+<span class="nc" id="L17">        String body = request.body();</span>
+<span class="nc" id="L18">        PaymentDTO payment = Parser.toObj(body, PaymentDTO.class);</span>
+<span class="nc" id="L19">        return PaymentService.newPayment(payment);</span>
+
+    }
+    public static Preference getPaymentId(String id) throws MPException {
+<span class="nc" id="L23">        return PreferenceService.getPreferenceId(id);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
