@@ -1,6 +1,6 @@
 package exception;
 
-public class AbstractGeneralException extends  RuntimeException{
+public class AbstractGeneralException extends RuntimeException {
     public Object requestData;
 
     public int httpStatus;

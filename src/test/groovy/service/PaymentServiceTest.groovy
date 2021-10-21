@@ -1,5 +1,4 @@
 package service
-import com.mercadopago.exceptions.MPRestException;
 import com.mercadopago.resources.Payment
 import com.mercadopago.resources.datastructures.payment.Address
 import com.mercadopago.resources.datastructures.payment.Identification
@@ -9,7 +8,6 @@ import dto.IdentificationDTO
 import dto.PayerDTO
 import dto.PaymentDTO
 import exception.ErrorCreatePaymentException
-import org.mockito.Mockito
 import services.PaymentService
 import spock.lang.Specification
 import util.MPAcess

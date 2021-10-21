@@ -6,14 +6,14 @@ import com.mercadopago.resources.datastructures.preference.Item;
 import com.mercadopago.resources.datastructures.preference.PaymentMethods;
 import dto.ItemDTO;
 import dto.PreferenceDTO;
-import exception.ErrorCreatePaymentException;
 import util.ConverterToDto;
 
 import java.util.ArrayList;
 
 public class PreferenceService {
 
-    public PreferenceService() { }
+    public PreferenceService() {
+    }
 
     public static PreferenceDTO createPreference(ItemDTO itemDTO) throws MPException {
         Preference preference = new Preference();
@@ -22,18 +22,18 @@ public class PreferenceService {
         PreferenceDTO preferenceId = new PreferenceDTO();
 
         PaymentMethods paymentMethods = new PaymentMethods();
-        paymentMethods.setExcludedPaymentTypes("credit_card","digital_wallet","digital_currency","bank_transfer");
+        paymentMethods.setExcludedPaymentTypes("credit_card", "digital_wallet", "digital_currency", "bank_transfer");
 
         preference.setPaymentMethods(paymentMethods);
 
-            Item item = new Item();
-            item.setTitle(itemDTO.getTitle())
-                    .setQuantity(itemDTO.getQuantity())
-                    .setUnitPrice(itemDTO.getUnit_price());
-            arr.add(item);
-            preference.setItems(arr);
-            preference = preference.save();
-            preferenceId = preferenceDTO.converterPreferenceToDto(preference);
+        Item item = new Item();
+        item.setTitle(itemDTO.getTitle())
+                .setQuantity(itemDTO.getQuantity())
+                .setUnitPrice(itemDTO.getUnit_price());
+        arr.add(item);
+        preference.setItems(arr);
+        preference = preference.save();
+        preferenceId = preferenceDTO.converterPreferenceToDto(preference);
 
         return preferenceId;
     }

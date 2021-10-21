@@ -2,24 +2,24 @@
 
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
-import com.mercadopago.resources.Preference;
 import dto.PaymentDTO;
 import services.PaymentService;
-import services.PreferenceService;
 import spark.Request;
 import spark.Response;
 import util.Parser;
 
 public class PaymentController {
-    private PaymentController(){}
+<span class="fc" id="L12">    public PaymentController() {</span>
+<span class="fc" id="L13">    }</span>
 
     public static Payment createNewPayment(Request request, Response response) throws MPException {
-<span class="nc" id="L17">        String body = request.body();</span>
-<span class="nc" id="L18">        PaymentDTO payment = Parser.toObj(body, PaymentDTO.class);</span>
-<span class="nc" id="L19">        return PaymentService.newPayment(payment);</span>
+<span class="fc" id="L16">        String body = request.body();</span>
+<span class="fc" id="L17">        PaymentDTO payment = Parser.toObj(body, PaymentDTO.class);</span>
+<span class="fc" id="L18">        return PaymentService.newPayment(payment);</span>
     }
+
     public static Payment getPaymentId(String id) throws MPException {
-<span class="nc" id="L22">        return PaymentService.getPaymentId(id);</span>
+<span class="fc" id="L22">        return PaymentService.getPaymentId(id);</span>
     }
 
 }

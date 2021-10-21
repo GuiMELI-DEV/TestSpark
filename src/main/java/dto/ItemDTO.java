@@ -18,32 +18,12 @@ public class ItemDTO {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public float getUnit_price() {
         return unit_price;
     }
 
-    public void setUnit_price(float unit_price) {
-        this.unit_price = unit_price;
-    }
-
-    @Override
-    public String toString() {
-        return "ItensDTO{" +
-                "title='" + title + '\'' +
-                ", quantity=" + quantity +
-                ", unit_price=" + unit_price +
-                '}';
-    }
 }

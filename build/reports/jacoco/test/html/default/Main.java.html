@@ -16,14 +16,14 @@ import static spark.Spark.path;
 <span class="nc" id="L16">        MPAcess.MercadoPago.access();</span>
 <span class="nc" id="L17">        before(&quot;/*&quot;, (request, response) -&gt; response.type(&quot;application/json&quot;));</span>
 <span class="nc" id="L18">        path(&quot;/preference&quot;, () -&gt; {</span>
-<span class="nc" id="L19">                post(&quot;/&quot;, PreferenceController::createPreference, new CoverterToJson());</span>
-<span class="nc" id="L20">                get(&quot;/:id&quot;,(request, response) -&gt; {</span>
-<span class="nc" id="L21">                    return PreferenceController.getPreferenceId(request.params(&quot;:id&quot;));</span>
-                }, new CoverterToJson());
-<span class="nc" id="L23">         });</span>
+<span class="nc" id="L19">            post(&quot;/&quot;, PreferenceController::createPreference, new CoverterToJson());</span>
+<span class="nc" id="L20">            get(&quot;/:id&quot;, (request, response) -&gt; {</span>
+<span class="nc" id="L21">                return PreferenceController.getPreferenceId(request.params(&quot;:id&quot;));</span>
+            }, new CoverterToJson());
+<span class="nc" id="L23">        });</span>
 <span class="nc" id="L24">        path(&quot;/payment&quot;, () -&gt; {</span>
 <span class="nc" id="L25">            post(&quot;/&quot;, PaymentController::createNewPayment, new CoverterToJson());</span>
-<span class="nc" id="L26">            get(&quot;/:id&quot;,(request, response) -&gt; {</span>
+<span class="nc" id="L26">            get(&quot;/:id&quot;, (request, response) -&gt; {</span>
 <span class="nc" id="L27">                return PaymentController.getPaymentId(request.params(&quot;:id&quot;));</span>
             }, new CoverterToJson());
 <span class="nc" id="L29">        });</span>

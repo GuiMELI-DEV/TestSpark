@@ -1,19 +1,12 @@
 package service
 
-import com.mercadopago.MercadoPago
 import com.mercadopago.exceptions.MPValidationException
-import com.mercadopago.resources.Payment
 import com.mercadopago.resources.Preference
-import com.mercadopago.resources.datastructures.preference.Item
-import com.mercadopago.resources.datastructures.preference.PaymentMethods
 import dto.ItemDTO
 import dto.PreferenceDTO
 import org.mockito.Mockito
-import exception.ErrorCreatePaymentException
-import services.PaymentService
 import services.PreferenceService
 import spock.lang.Specification
-import util.ConverterToDto
 import util.MPAcess
 
 class PreferenceServiceTest extends Specification{
