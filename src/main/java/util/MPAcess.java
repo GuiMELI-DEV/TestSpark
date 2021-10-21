@@ -11,7 +11,8 @@ public class MPAcess {
         private static final String ENV_ACCESS_TOKEN = "ENV_ACCESS_TOKEN";
         private static final String PUBLIC_KEY = "PUBLIC_KEY";
 
-        private MercadoPago() { }
+        private MercadoPago() {
+        }
 
         public static void access() throws MPConfException {
             com.mercadopago.MercadoPago.SDK.setAccessToken(MPAcess.MercadoPago.getEnvAccessToken());
@@ -20,14 +21,10 @@ public class MPAcess {
             new Payment();
             new Preference();
 
-        };
-
-        public static String getEnvAccessToken() {
-            return System.getenv(ENV_ACCESS_TOKEN);
         }
 
-        public static String getPublicKey() {
-            return System.getenv(PUBLIC_KEY);
+        public static String getEnvAccessToken() {
+            return "TEST-6827747143070079-102021-5a79ac2f87777182e3c8f3a4abc4def6-813008278";
         }
     }
 }

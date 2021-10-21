@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="service.PaymentServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-21T17:51:02" hostname="BR0C02DX1NAMD6Q" time="0.786">
+  <properties/>
+  <testcase name="create payment" classname="service.PaymentServiceTest" time="0.588"/>
+  <testcase name="exception create payment " classname="service.PaymentServiceTest" time="0.008"/>
+  <testcase name="get payment by Id" classname="service.PaymentServiceTest" time="0.189"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

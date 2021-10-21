@@ -4,11 +4,6 @@ public class IdentificationDTO {
     private String type;
     private String number;
 
-    public IdentificationDTO(String type, String number) {
-        this.type = type;
-        this.number = number;
-    }
-
     public IdentificationDTO() { }
 
     public String getType() {
@@ -27,11 +22,4 @@ public class IdentificationDTO {
         this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return "IdentificationDTO{" +
-                "type='" + type + '\'' +
-                ", number='" + number + '\'' +
-                '}';
-    }
 }
