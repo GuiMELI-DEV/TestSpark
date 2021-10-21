@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="service.PreferenceServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-21T14:59:40" hostname="BR0C02DX1NAMD6Q" time="1.189">
+  <properties/>
+  <testcase name="create preference" classname="service.PreferenceServiceTest" time="0.34"/>
+  <testcase name="get preference by Id" classname="service.PreferenceServiceTest" time="0.198"/>
+  <testcase name="exception MPValidationException create preference " classname="service.PreferenceServiceTest" time="0.651"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

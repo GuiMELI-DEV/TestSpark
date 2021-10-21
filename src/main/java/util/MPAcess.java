@@ -23,7 +23,7 @@ public class MPAcess {
         };
 
         public static String getEnvAccessToken() {
-            return System.getenv(ENV_ACCESS_TOKEN);
+            return "TEST-6827747143070079-102021-5a79ac2f87777182e3c8f3a4abc4def6-813008278";
         }
 
         public static String getPublicKey() {

@@ -17,10 +17,9 @@ public class PaymentController {
 <span class="nc" id="L17">        String body = request.body();</span>
 <span class="nc" id="L18">        PaymentDTO payment = Parser.toObj(body, PaymentDTO.class);</span>
 <span class="nc" id="L19">        return PaymentService.newPayment(payment);</span>
-
     }
-    public static Preference getPaymentId(String id) throws MPException {
-<span class="nc" id="L23">        return PreferenceService.getPreferenceId(id);</span>
+    public static Payment getPaymentId(String id) throws MPException {
+<span class="nc" id="L22">        return PaymentService.getPaymentId(id);</span>
     }
 
 }

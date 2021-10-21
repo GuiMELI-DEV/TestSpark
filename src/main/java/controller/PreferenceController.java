@@ -12,7 +12,7 @@ import util.Parser;
 public class PreferenceController {
     private PreferenceController() { }
 
-    public static PreferenceDTO createPreference(Request request, Response response) {
+    public static PreferenceDTO createPreference(Request request, Response response) throws MPException {
         String body = request.body();
         ItemDTO itemDTO = Parser.toObj(body, ItemDTO.class);
         return PreferenceService.createPreference(itemDTO);

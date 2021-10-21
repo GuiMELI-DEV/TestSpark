@@ -18,25 +18,27 @@ public class PaymentService {
             throw new ErrorCreatePaymentException("PaymentDTO should not be empty or null", paymentDTO);
         }
         Payment payment = new Payment();
-        payment.setTransactionAmount(paymentDTO.getTransactionAmount())
-                .setDescription(paymentDTO.getDescription())
-                .setPaymentMethodId(paymentDTO.getPaymentMethodId())
-                .setPayer(new Payer()
-                        .setFirstName(paymentDTO.getPayer().getFirstName())
-                        .setLastName(paymentDTO.getPayer().getLastName())
-                        .setEmail(paymentDTO.getPayer().getEmail())
-                        .setIdentification(new Identification()
-                                .setType(paymentDTO.getPayer().getIdentification().getType())
-                                .setNumber(paymentDTO.getPayer().getIdentification().getNumber()))
-                        .setAddress(new Address()
-                                .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())
-                                .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())
-                                .setStreetNumber(paymentDTO.getPayer().getAddress().getStreetNumber())
-                                .setZipCode(paymentDTO.getPayer().getAddress().getZipCode())
-                                .setNeighborhood(paymentDTO.getPayer().getAddress().getNeighborhood())
-                                .setCity(paymentDTO.getPayer().getAddress().getCity())));
 
-        payment.save();
+            payment.setTransactionAmount(paymentDTO.getTransactionAmount())
+                    .setDescription(paymentDTO.getDescription())
+                    .setPaymentMethodId(paymentDTO.getPaymentMethodId())
+                    .setPayer(new Payer()
+                            .setFirstName(paymentDTO.getPayer().getFirstName())
+                            .setLastName(paymentDTO.getPayer().getLastName())
+                            .setEmail(paymentDTO.getPayer().getEmail())
+                            .setIdentification(new Identification()
+                                    .setType(paymentDTO.getPayer().getIdentification().getType())
+                                    .setNumber(paymentDTO.getPayer().getIdentification().getNumber()))
+                            .setAddress(new Address()
+                                    .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())
+                                    .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())
+                                    .setStreetNumber(paymentDTO.getPayer().getAddress().getStreetNumber())
+                                    .setZipCode(paymentDTO.getPayer().getAddress().getZipCode())
+                                    .setNeighborhood(paymentDTO.getPayer().getAddress().getNeighborhood())
+                                    .setCity(paymentDTO.getPayer().getAddress().getCity())));
+
+            payment.save();
+
         return payment;
     }
 

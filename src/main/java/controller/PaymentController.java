@@ -18,8 +18,8 @@ public class PaymentController {
         PaymentDTO payment = Parser.toObj(body, PaymentDTO.class);
         return PaymentService.newPayment(payment);
     }
-    public static Preference getPaymentId(String id) throws MPException {
-        return PreferenceService.getPreferenceId(id);
+    public static Payment getPaymentId(String id) throws MPException {
+        return PaymentService.getPaymentId(id);
     }
 
 }

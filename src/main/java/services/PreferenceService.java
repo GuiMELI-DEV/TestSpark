@@ -13,15 +13,14 @@ import java.util.ArrayList;
 
 public class PreferenceService {
 
-    private PreferenceService() { }
+    public PreferenceService() { }
 
-    public static PreferenceDTO createPreference(ItemDTO itemDTO) {
+    public static PreferenceDTO createPreference(ItemDTO itemDTO) throws MPException {
         Preference preference = new Preference();
         ArrayList arr = new ArrayList();
         ConverterToDto preferenceDTO = new ConverterToDto();
         PreferenceDTO preferenceId = new PreferenceDTO();
 
-        try {
         PaymentMethods paymentMethods = new PaymentMethods();
         paymentMethods.setExcludedPaymentTypes("credit_card","digital_wallet","digital_currency","bank_transfer");
 
@@ -35,11 +34,6 @@ public class PreferenceService {
             preference.setItems(arr);
             preference = preference.save();
             preferenceId = preferenceDTO.converterPreferenceToDto(preference);
-            if(preference.getSandboxInitPoint() == null)
-                throw new ErrorCreatePaymentException(preference.getLastApiResponse().getStringResponse(), preference);
-        } catch (MPException e) {
-            e.printStackTrace();
-        }
 
         return preferenceId;
     }
