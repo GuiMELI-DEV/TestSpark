@@ -2,48 +2,57 @@
 
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
+import com.mercadopago.resources.Preference;
 import com.mercadopago.resources.datastructures.payment.Address;
 import com.mercadopago.resources.datastructures.payment.Identification;
 import com.mercadopago.resources.datastructures.payment.Payer;
 import dto.PaymentDTO;
 import exception.ErrorCreatePaymentException;
+import factorys.PaymentFactory;
 
 
 public class PaymentService {
-<span class="fc" id="L13">    public PaymentService() {</span>
-<span class="fc" id="L14">    }</span>
+    private static PaymentFactory paymentFactory;
+<span class="fc" id="L16">    public PaymentService() {</span>
+<span class="fc" id="L17">    }</span>
 
     public static Payment newPayment(PaymentDTO paymentDTO) throws MPException {
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (paymentDTO == null) {</span>
-<span class="fc" id="L18">            throw new ErrorCreatePaymentException(&quot;PaymentDTO should not be empty or null&quot;, paymentDTO);</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (paymentDTO == null) {</span>
+<span class="fc" id="L21">            throw new ErrorCreatePaymentException(&quot;PaymentDTO should not be empty or null&quot;, paymentDTO);</span>
         }
-<span class="fc" id="L20">        Payment payment = new Payment();</span>
+<span class="fc" id="L23">        Payment payment = PaymentService.buildPayment(paymentDTO);</span>
+<span class="fc" id="L24">        payment.save();</span>
 
-<span class="fc" id="L22">        payment.setTransactionAmount(paymentDTO.getTransactionAmount())</span>
-<span class="fc" id="L23">                .setDescription(paymentDTO.getDescription())</span>
-<span class="fc" id="L24">                .setPaymentMethodId(paymentDTO.getPaymentMethodId())</span>
-<span class="fc" id="L25">                .setPayer(new Payer()</span>
-<span class="fc" id="L26">                        .setFirstName(paymentDTO.getPayer().getFirstName())</span>
-<span class="fc" id="L27">                        .setLastName(paymentDTO.getPayer().getLastName())</span>
-<span class="fc" id="L28">                        .setEmail(paymentDTO.getPayer().getEmail())</span>
-<span class="fc" id="L29">                        .setIdentification(new Identification()</span>
-<span class="fc" id="L30">                                .setType(paymentDTO.getPayer().getIdentification().getType())</span>
-<span class="fc" id="L31">                                .setNumber(paymentDTO.getPayer().getIdentification().getNumber()))</span>
-<span class="fc" id="L32">                        .setAddress(new Address()</span>
-<span class="fc" id="L33">                                .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())</span>
-<span class="fc" id="L34">                                .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())</span>
-<span class="fc" id="L35">                                .setStreetNumber(paymentDTO.getPayer().getAddress().getStreetNumber())</span>
-<span class="fc" id="L36">                                .setZipCode(paymentDTO.getPayer().getAddress().getZipCode())</span>
-<span class="fc" id="L37">                                .setNeighborhood(paymentDTO.getPayer().getAddress().getNeighborhood())</span>
-<span class="fc" id="L38">                                .setCity(paymentDTO.getPayer().getAddress().getCity())));</span>
+<span class="fc" id="L26">        return payment;</span>
+    }
 
-<span class="fc" id="L40">        payment.save();</span>
+    public static void setPaymentFactory(PaymentFactory paymentFactory){
+<span class="fc" id="L30">        PaymentService.paymentFactory = paymentFactory;</span>
+<span class="fc" id="L31">    }</span>
 
-<span class="fc" id="L42">        return payment;</span>
+    private static Payment buildPayment(PaymentDTO paymentDTO){
+<span class="fc" id="L34">        Payment payment = paymentFactory.createPayment();</span>
+<span class="fc" id="L35">        return payment.setTransactionAmount(paymentDTO.getTransactionAmount())</span>
+<span class="fc" id="L36">                .setDescription(paymentDTO.getDescription())</span>
+<span class="fc" id="L37">                .setPaymentMethodId(paymentDTO.getPaymentMethodId())</span>
+<span class="fc" id="L38">                .setPayer(new Payer()</span>
+<span class="fc" id="L39">                        .setFirstName(paymentDTO.getPayer().getFirstName())</span>
+<span class="fc" id="L40">                        .setLastName(paymentDTO.getPayer().getLastName())</span>
+<span class="fc" id="L41">                        .setEmail(paymentDTO.getPayer().getEmail())</span>
+<span class="fc" id="L42">                        .setIdentification(new Identification()</span>
+<span class="fc" id="L43">                                .setType(paymentDTO.getPayer().getIdentification().getType())</span>
+<span class="fc" id="L44">                                .setNumber(paymentDTO.getPayer().getIdentification().getNumber()))</span>
+<span class="fc" id="L45">                        .setAddress(new Address()</span>
+<span class="fc" id="L46">                                .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())</span>
+<span class="fc" id="L47">                                .setStreetName(paymentDTO.getPayer().getAddress().getStreetName())</span>
+<span class="fc" id="L48">                                .setStreetNumber(paymentDTO.getPayer().getAddress().getStreetNumber())</span>
+<span class="fc" id="L49">                                .setZipCode(paymentDTO.getPayer().getAddress().getZipCode())</span>
+<span class="fc" id="L50">                                .setNeighborhood(paymentDTO.getPayer().getAddress().getNeighborhood())</span>
+<span class="fc" id="L51">                                .setCity(paymentDTO.getPayer().getAddress().getCity())));</span>
     }
 
     public static Payment getPaymentId(String id) throws MPException {
-<span class="fc" id="L46">        return Payment.findById(id);</span>
+<span class="fc" id="L55">        return Payment.findById(id);</span>
     }
 
 }

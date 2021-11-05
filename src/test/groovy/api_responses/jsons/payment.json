@@ -1,0 +1,49 @@
+{
+  "id": "1243012840",
+  "dateCreated": "Nov 4, 2021 4:25:03 PM",
+  "dateLastUpdated": "Nov 4, 2021 4:25:03 PM",
+  "collectorId": 813008278,
+  "operationType": "regular_payment",
+  "payer": {
+    "id": "128185910",
+    "email": "test_user_80507629@testuser.com",
+    "identification": {
+      "type": "DNI",
+      "number": "32659430"
+    },
+    "phone": {}
+  },
+  "binaryMode": false,
+  "liveMode": false,
+  "order": {},
+  "description": "teste",
+  "metadata": {},
+  "currencyId": "BRL",
+  "transactionAmount": 10.0,
+  "transactionAmountRefunded": 0.0,
+  "couponAmount": 0.0,
+  "transactionDetails": {
+    "financialInstitution": "",
+    "netReceivedAmount": 0.0,
+    "totalPaidAmount": 10.0,
+    "installmentAmount": 0.0,
+    "overpaidAmount": 0.0,
+    "externalResourceUrl": "https://www.mercadopago.com/mlb/payments/sandbox/ticket/helper?payment_id=1243012840&payment_method_reference_id=6002158837&caller_id=128185910&hash=911ec03a-21f4-4c29-abc7-8885c9076fa8",
+    "paymentMethodReferenceId": "6002158837"
+  },
+  "feeDetails": [],
+  "status": "pending",
+  "statusDetail": "pending_waiting_payment",
+  "captured": true,
+  "paymentMethodId": "bolbradesco",
+  "paymentTypeId": "ticket",
+  "card": {},
+  "installments": 1,
+  "refunds": [],
+  "additionalInfo": {},
+  "processingMode": "aggregator",
+  "dateOfExpiration": "Nov 7, 2021 11:59:59 PM",
+  "pointOfInteraction": {
+    "type": "UNSPECIFIED"
+  }
+}

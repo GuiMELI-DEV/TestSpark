@@ -15,10 +15,14 @@ repositories {
 }
 
 dependencies {
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
     compile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.codehaus.groovy:groovy-all:2.4.11'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
     testCompile 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:3.+"
+    testImplementation 'org.mockito:mockito-inline:4.0.0'
+    //testImplementation 'org.powermock:powermock-module-junit4:1.6.4'
     testCompile 'org.codehaus.groovy:groovy-all:2.4.11'
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
 

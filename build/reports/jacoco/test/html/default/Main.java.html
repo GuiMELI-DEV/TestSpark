@@ -2,6 +2,10 @@
 import com.mercadopago.exceptions.MPConfException;
 import controller.PaymentController;
 import controller.PreferenceController;
+import factorys.PaymentFactory;
+import factorys.PreferenceFactory;
+import services.PaymentService;
+import services.PreferenceService;
 import util.CoverterToJson;
 import util.MPAcess;
 import static spark.Spark.*;
@@ -9,25 +13,27 @@ import static spark.Spark.before;
 import static spark.Spark.path;
 
 
-<span class="nc" id="L12">public class Main {</span>
+<span class="nc" id="L16">public class Main {</span>
 
 
     public static void main(String[] args) throws MPConfException {
-<span class="nc" id="L16">        MPAcess.MercadoPago.access();</span>
-<span class="nc" id="L17">        before(&quot;/*&quot;, (request, response) -&gt; response.type(&quot;application/json&quot;));</span>
-<span class="nc" id="L18">        path(&quot;/preference&quot;, () -&gt; {</span>
-<span class="nc" id="L19">            post(&quot;/&quot;, PreferenceController::createPreference, new CoverterToJson());</span>
-<span class="nc" id="L20">            get(&quot;/:id&quot;, (request, response) -&gt; {</span>
-<span class="nc" id="L21">                return PreferenceController.getPreferenceId(request.params(&quot;:id&quot;));</span>
-            }, new CoverterToJson());
-<span class="nc" id="L23">        });</span>
-<span class="nc" id="L24">        path(&quot;/payment&quot;, () -&gt; {</span>
-<span class="nc" id="L25">            post(&quot;/&quot;, PaymentController::createNewPayment, new CoverterToJson());</span>
+<span class="nc" id="L20">        MPAcess.MercadoPago.access();</span>
+<span class="nc" id="L21">        PreferenceService.setPreferenceFactory(new PreferenceFactory());</span>
+<span class="nc" id="L22">        PaymentService.setPaymentFactory(new PaymentFactory());</span>
+<span class="nc" id="L23">        before(&quot;/*&quot;, (request, response) -&gt; response.type(&quot;application/json&quot;));</span>
+<span class="nc" id="L24">        path(&quot;/preference&quot;, () -&gt; {</span>
+<span class="nc" id="L25">            post(&quot;/&quot;, PreferenceController::createPreference, new CoverterToJson());</span>
 <span class="nc" id="L26">            get(&quot;/:id&quot;, (request, response) -&gt; {</span>
-<span class="nc" id="L27">                return PaymentController.getPaymentId(request.params(&quot;:id&quot;));</span>
+<span class="nc" id="L27">                return PreferenceController.getPreferenceId(request.params(&quot;:id&quot;));</span>
             }, new CoverterToJson());
 <span class="nc" id="L29">        });</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L30">        path(&quot;/payment&quot;, () -&gt; {</span>
+<span class="nc" id="L31">            post(&quot;/&quot;, PaymentController::createNewPayment, new CoverterToJson());</span>
+<span class="nc" id="L32">            get(&quot;/:id&quot;, (request, response) -&gt; {</span>
+<span class="nc" id="L33">                return PaymentController.getPaymentId(request.params(&quot;:id&quot;));</span>
+            }, new CoverterToJson());
+<span class="nc" id="L35">        });</span>
+<span class="nc" id="L36">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

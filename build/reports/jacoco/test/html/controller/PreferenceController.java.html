@@ -4,23 +4,25 @@ import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Preference;
 import dto.ItemDTO;
 import dto.PreferenceDTO;
+import factorys.PreferenceFactory;
 import services.PreferenceService;
 import spark.Request;
 import spark.Response;
 import util.Parser;
 
 public class PreferenceController {
-<span class="fc" id="L13">    public PreferenceController() {</span>
-<span class="fc" id="L14">    }</span>
+
+<span class="fc" id="L15">    public PreferenceController() {</span>
+<span class="fc" id="L16">    }</span>
 
     public static PreferenceDTO createPreference(Request request, Response response) throws MPException {
-<span class="fc" id="L17">        String body = request.body();</span>
-<span class="fc" id="L18">        ItemDTO itemDTO = Parser.toObj(body, ItemDTO.class);</span>
-<span class="fc" id="L19">        return PreferenceService.createPreference(itemDTO);</span>
+<span class="fc" id="L19">        String body = request.body();</span>
+<span class="fc" id="L20">        ItemDTO itemDTO = Parser.toObj(body, ItemDTO.class);</span>
+<span class="fc" id="L21">        return PreferenceService.createPreference(itemDTO);</span>
     }
 
     public static Preference getPreferenceId(String id) throws MPException {
-<span class="fc" id="L23">        return PreferenceService.getPreferenceId(id);</span>
+<span class="fc" id="L25">        return PreferenceService.getPreferenceId(id);</span>
     }
 
 }
