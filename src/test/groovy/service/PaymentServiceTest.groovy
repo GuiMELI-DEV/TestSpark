@@ -1,38 +1,24 @@
 package service
+
+import api_responses.ApiResponse
 import com.mercadopago.resources.Payment
-import com.mercadopago.resources.datastructures.payment.Address
-import com.mercadopago.resources.datastructures.payment.Identification
-import com.mercadopago.resources.datastructures.payment.Payer
 import dto.AddressDTO
 import dto.IdentificationDTO
 import dto.PayerDTO
 import dto.PaymentDTO
 import exception.ErrorCreatePaymentException
+import factorys.PaymentFactory
+import org.mockito.MockedStatic
+import org.mockito.Mockito
 import services.PaymentService
 import spock.lang.Specification
 import util.MPAcess
+import util.Parser
 
 class PaymentServiceTest extends Specification {
     def "create payment"() {
         given:
             MPAcess.MercadoPago.access();
-            Payment payment = new Payment();
-            payment.setTransactionAmount(10)
-                    .setDescription("produtoTest")
-                    .setPaymentMethodId("bolbradesco")
-                    .setPayer(new Payer()
-                            .setFirstName("Guilherme")
-                            .setLastName("Ferreira")
-                            .setEmail("test@test.com")
-                            .setIdentification(new Identification()
-                                    .setType("CPF")
-                                    .setNumber("123456789"))
-                            .setAddress(new Address()
-                                    .setStreetName("Av. das Nações Unidas")
-                                    .setStreetNumber(3003)
-                                    .setZipCode("06233200")
-                                    .setNeighborhood("Bonfim")
-                                    .setCity("Osasco")));
 
             IdentificationDTO identificationDTO = new IdentificationDTO()
             identificationDTO.setType("CPF")
@@ -58,11 +44,22 @@ class PaymentServiceTest extends Specification {
             paymentDTO.setPaymentMethodId("bolbradesco")
             paymentDTO.setPayer(payerDTO)
 
-            PaymentService paymentService = new PaymentService()
+            ApiResponse api = new ApiResponse();
+            String response = api.getFile("/payment");
+            Payment paymentJson = Parser.toObj(response, Payment.class);
+
+            Payment paymentMock = Mockito.spy(new Payment());
+            Mockito.doReturn(paymentJson).when(paymentMock).save()
+
+            PaymentFactory paymentFactory = Mockito.mock(PaymentFactory)
+            Mockito.when(paymentFactory.createPayment()).thenReturn(paymentMock)
+
+            PaymentService.setPaymentFactory(paymentFactory)
+
         when:
-            def result = paymentService.newPayment(paymentDTO)
+            def result = PaymentService.newPayment(paymentDTO)
         then:
-            result.payer.identification.number == payment.payer.identification.number
+            result.payer.identification.number != null
     }
 
     def "exception create payment "() {
@@ -80,12 +77,19 @@ class PaymentServiceTest extends Specification {
 
         given:
             MPAcess.MercadoPago.access();
-            PaymentService paymentService = new PaymentService()
+
+            ApiResponse api = new ApiResponse();
+            String response = api.getFile("/payment");
+            Payment paymentJson = Parser.toObj(response, Payment.class);
+
+            MockedStatic<Payment> paymentMock = Mockito.mockStatic(Payment);
+            paymentMock.when(Payment.findById(Mockito.anyString())).thenReturn(paymentJson)
+
         when:
-            Payment result = paymentService.getPaymentId("1242575550")
+            Payment result = PaymentService.getPaymentId("")
 
         then:
-            result.getId() == "1242575550"
+            result.getId() == paymentJson.getId()
     }
 
 }

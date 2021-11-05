@@ -1,0 +1,77 @@
+{
+  "additional_info": "",
+  "auto_return": "",
+  "back_urls": {
+    "failure": "",
+    "pending": "wwww.dummy-url.com/pending",
+    "success": "wwww.dummy-url.com/success"
+  },
+  "client_id": "7779559135594958",
+  "collector_id": 227815697,
+  "date_created": "2018-02-22T13:40:42.298-04:00",
+  "expiration_date_from": null,
+  "expiration_date_to": null,
+  "expires": false,
+  "external_reference": "",
+  "id": "138275050-cbfb314c-6e10-4f58-9f93-1916033980db",
+  "init_point": "https://www.mercadopago.com/mla/checkout/pay?pref_id=138275050-cbfb314c-6e10-4f58-9f93-1916033980db",
+  "items": [
+    {
+      "category_id": "",
+      "currency_id": "ARS",
+      "description": "",
+      "id": "",
+      "picture_url": "",
+      "quantity": 1,
+      "title": "Item de testeo",
+      "unit_price": 4504
+    }
+  ],
+  "marketplace": "NONE",
+  "marketplace_fee": 0,
+  "notification_url": null,
+  "operation_type": "regular_payment",
+  "payer": {
+    "address": {
+      "street_name": "",
+      "street_number": null,
+      "zip_code": ""
+    },
+    "date_created": "",
+    "email": "test_user_66836869@testuser.com",
+    "identification": {
+      "number": "",
+      "type": ""
+    },
+    "name": "",
+    "phone": {
+      "area_code": "",
+      "number": ""
+    },
+    "surname": ""
+  },
+  "payment_methods": {
+    "default_installments": 3,
+    "default_payment_method_id": "master",
+    "excluded_payment_methods": [
+
+    ],
+    "excluded_payment_types": [
+
+    ],
+    "installments": 9
+  },
+  "sandbox_init_point": "https://sandbox.mercadopago.com/mla/checkout/pay?pref_id=138275050-cbfb314c-6e10-4f58-9f93-1916033980db",
+  "shipments": {
+    "cost": 1000,
+    "mode": "custom",
+    "receiver_address": {
+      "apartment": "",
+      "floor": "",
+      "street_name": "",
+      "street_number": null,
+      "zip_code": ""
+    }
+  },
+  "total_amount": 4504
+}

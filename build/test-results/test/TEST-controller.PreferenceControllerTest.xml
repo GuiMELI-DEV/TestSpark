@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="controller.PreferenceControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-21T17:51:01" hostname="BR0C02DX1NAMD6Q" time="0.577">
+<testsuite name="controller.PreferenceControllerTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2021-11-05T10:35:18" hostname="BR0C02DX1NAMD6Q" time="0.017">
   <properties/>
-  <testcase name="create preference" classname="controller.PreferenceControllerTest" time="0.343"/>
-  <testcase name="get preference id" classname="controller.PreferenceControllerTest" time="0.234"/>
+  <testcase name="create preference" classname="controller.PreferenceControllerTest" time="0.011">
+    <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
+	at services.PreferenceService.createPreference(PreferenceService.java:23)
+	at controller.PreferenceController.createPreference(PreferenceController.java:21)
+	at controller.PreferenceControllerTest.create preference(PreferenceControllerTest.groovy:36)
+</failure>
+  </testcase>
+  <testcase name="get preference id" classname="controller.PreferenceControllerTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

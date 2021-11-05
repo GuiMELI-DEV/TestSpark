@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mercadopago:sdk-java:1.9.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mercadopago/sdk-java/1.9.0/3210dad7a1c5bcecba9087312976d7445d57f8e1/sdk-java-1.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mercadopago/sdk-java/1.9.0/e68c4dc3883ff22a429c6037d7359324c9c14d2b/sdk-java-1.9.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

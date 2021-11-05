@@ -2,6 +2,7 @@ package controller
 
 import com.mercadopago.resources.Preference
 import dto.PreferenceDTO
+import factorys.PreferenceFactory
 import org.mockito.Mockito
 import spark.Request
 import spark.Response
@@ -17,6 +18,7 @@ class PreferenceControllerTest extends Specification {
     def "create preference"() {
 
         given:
+
             Request request = Mockito.mock(Request.class);
             Mockito.when(request.body()).thenReturn("{\n" +
                     "    \"title\": \"teste Preferece6\",\n" +
@@ -28,6 +30,7 @@ class PreferenceControllerTest extends Specification {
                     "    \"unit_price\": 15\n" +
                     "}");
             MPAcess.MercadoPago.access();
+
             PreferenceController preferenceController = new PreferenceController()
         when:
             PreferenceDTO result = preferenceController.createPreference(request, response)

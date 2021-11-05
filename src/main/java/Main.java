@@ -2,6 +2,10 @@
 import com.mercadopago.exceptions.MPConfException;
 import controller.PaymentController;
 import controller.PreferenceController;
+import factorys.PaymentFactory;
+import factorys.PreferenceFactory;
+import services.PaymentService;
+import services.PreferenceService;
 import util.CoverterToJson;
 import util.MPAcess;
 import static spark.Spark.*;
@@ -14,6 +18,8 @@ public class Main {
 
     public static void main(String[] args) throws MPConfException {
         MPAcess.MercadoPago.access();
+        PreferenceService.setPreferenceFactory(new PreferenceFactory());
+        PaymentService.setPaymentFactory(new PaymentFactory());
         before("/*", (request, response) -> response.type("application/json"));
         path("/preference", () -> {
             post("/", PreferenceController::createPreference, new CoverterToJson());
