@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="service.PreferenceServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-05T10:35:18" hostname="BR0C02DX1NAMD6Q" time="0.14">
+<testsuite name="service.PreferenceServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-05T11:12:55" hostname="BR0C02DX1NAMD6Q" time="0.017">
   <properties/>
-  <testcase name="create preference" classname="service.PreferenceServiceTest" time="0.127"/>
-  <testcase name="get preference by Id" classname="service.PreferenceServiceTest" time="0.004"/>
-  <testcase name="exception MPValidationException create preference " classname="service.PreferenceServiceTest" time="0.009"/>
+  <testcase name="create preference" classname="service.PreferenceServiceTest" time="0.006"/>
+  <testcase name="get preference by Id" classname="service.PreferenceServiceTest" time="0.003"/>
+  <testcase name="exception MPValidationException create preference " classname="service.PreferenceServiceTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

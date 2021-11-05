@@ -4,20 +4,18 @@ package service
 import api_responses.ApiResponse
 
 import com.mercadopago.exceptions.MPValidationException
-import com.mercadopago.resources.Payment
 import com.mercadopago.resources.Preference
 import dto.ItemDTO
 import dto.PreferenceDTO
 import factorys.PreferenceFactory
 import org.mockito.MockedStatic
 import org.mockito.Mockito
-import services.PaymentService
 import services.PreferenceService
 import spock.lang.Specification
 import util.MPAcess
 import util.Parser
 
-class PreferenceServiceTest extends Specification{
+class PreferenceServiceTest extends Specification {
     def "create preference"() {
         given:
             ApiResponse api = new ApiResponse();

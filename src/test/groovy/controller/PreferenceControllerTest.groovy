@@ -1,14 +1,18 @@
 package controller
 
+import api_responses.ApiResponse
 import com.mercadopago.resources.Preference
+import dto.ItemDTO
 import dto.PreferenceDTO
 import factorys.PreferenceFactory
 import org.mockito.Mockito
+import services.PreferenceService
 import spark.Request
 import spark.Response
 import spock.lang.Shared
 import spock.lang.Specification
 import util.MPAcess
+import util.Parser
 
 class PreferenceControllerTest extends Specification {
 
@@ -18,7 +22,18 @@ class PreferenceControllerTest extends Specification {
     def "create preference"() {
 
         given:
+            MPAcess.MercadoPago.access();
 
+            ApiResponse api = new ApiResponse();
+            String responseFile = api.getFile("/preference_mla");
+            Preference preference = Parser.toObj(responseFile, Preference.class);
+            ItemDTO itemDTO = new ItemDTO("caderno", 2, 10)
+
+            Preference preferenceMock = Mockito.mock(Preference);
+            Mockito.when(preferenceMock.save()).thenReturn(preference);
+            PreferenceFactory preferenceFactory = Mockito.mock(PreferenceFactory)
+            Mockito.when(preferenceFactory.createPreference()).thenReturn(preferenceMock)
+            PreferenceService.setPreferenceFactory(preferenceFactory)
             Request request = Mockito.mock(Request.class);
             Mockito.when(request.body()).thenReturn("{\n" +
                     "    \"title\": \"teste Preferece6\",\n" +
@@ -29,7 +44,7 @@ class PreferenceControllerTest extends Specification {
                     "    \"currency_id\": \"U\$\",\n" +
                     "    \"unit_price\": 15\n" +
                     "}");
-            MPAcess.MercadoPago.access();
+
 
             PreferenceController preferenceController = new PreferenceController()
         when:

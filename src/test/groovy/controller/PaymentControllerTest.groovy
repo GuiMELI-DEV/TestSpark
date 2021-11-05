@@ -1,12 +1,16 @@
 package controller
 
+import api_responses.ApiResponse
 import com.mercadopago.resources.Payment
+import factorys.PaymentFactory
 import org.mockito.Mockito
+import services.PaymentService
 import spark.Request
 import spark.Response
 import spock.lang.Shared
 import spock.lang.Specification
 import util.MPAcess
+import util.Parser
 
 class PaymentControllerTest extends Specification {
     @Shared
@@ -15,6 +19,18 @@ class PaymentControllerTest extends Specification {
     def "create payment"() {
 
         given:
+            ApiResponse api = new ApiResponse();
+            String responseFile = api.getFile("/payment");
+            Payment paymentJson = Parser.toObj(responseFile, Payment.class);
+
+            Payment paymentMock = Mockito.spy(new Payment());
+            Mockito.doReturn(paymentJson).when(paymentMock).save()
+
+            PaymentFactory paymentFactory = Mockito.mock(PaymentFactory)
+            Mockito.when(paymentFactory.createPayment()).thenReturn(paymentMock)
+
+            PaymentService.setPaymentFactory(paymentFactory)
+
             Request request = Mockito.mock(Request.class);
             Mockito.when(request.body()).thenReturn("{\n" +
                     "        \"transaction_amount\": 10,\n" +
@@ -38,6 +54,7 @@ class PaymentControllerTest extends Specification {
                     "        } \n" +
                     "    }");
             MPAcess.MercadoPago.access();
+
             PaymentController paymentController = new PaymentController()
         when:
             Payment result = paymentController.createNewPayment(request, response)
